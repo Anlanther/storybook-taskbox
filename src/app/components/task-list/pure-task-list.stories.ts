@@ -6,36 +6,38 @@ import {
   moduleMetadata,
 } from '@storybook/angular';
 import TaskComponent from '../task/task.component';
-import TaskListComponent from './task-list.component';
+import PureTaskListComponent from './pure-task-list.component';
 
 // Gets the args from the Default story of task story
 import * as TaskStories from '../task/task.stories';
 
-const meta: Meta<TaskListComponent> = {
-  title: 'TaskList',
+const meta: Meta<PureTaskListComponent> = {
+  title: 'PureTaskList',
   // Automatically generates documentation for the component
   tags: ['autodocs'],
   decorators: [
     moduleMetadata({
-      declarations: [TaskListComponent, TaskComponent],
+      declarations: [PureTaskListComponent, TaskComponent],
       imports: [CommonModule],
     }),
     componentWrapperDecorator(
       (story) => `<div style="margin: 3em">${story}</div>`
     ),
   ],
-  render: (args: TaskListComponent) => ({
+  render: (args: PureTaskListComponent) => ({
     props: {
       ...args,
       onPinTask: TaskStories.actionsData.onPinTask,
       onArchiveTask: TaskStories.actionsData.onArchiveTask,
     },
-    template: `<app-task-list ${argsToTemplate(args)}></app-task-list>`,
+    template: `<app-pure-task-list ${argsToTemplate(
+      args
+    )}></app-pure-task-list>`,
   }),
 };
 
 export default meta;
-type Story = StoryObj<TaskListComponent>;
+type Story = StoryObj<PureTaskListComponent>;
 
 // args are the inputs for the component
 export const Default: Story = {
