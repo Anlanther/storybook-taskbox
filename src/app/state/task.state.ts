@@ -87,3 +87,4 @@ export class TasksState {
     });
   }
 }
+export { ArchiveTask, PinTask };
